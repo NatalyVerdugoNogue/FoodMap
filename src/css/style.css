@@ -1,0 +1,13 @@
+body {
+  background: url(../img/FondoClaroMantel20.png)no-repeat;
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+}
+
+.logoLoading {
+  background: url("../img/LogoFoodMap.png")no-repeat;
+  background-size: cover;
+  background-position: center;
+  width: 50vw;
+}
