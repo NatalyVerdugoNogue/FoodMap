@@ -1,5 +1,5 @@
 body {
-  background: url(../img/woodScreen.jpg)no-repeat;
+  background: url(../img/OCCNEV0.png)no-repeat;
   background-size: cover;
   background-position: center;
   height: 100vh;
@@ -19,7 +19,7 @@ body {
 }
 
 .logoSearch {
-  width: 40vw;
+  width: 50vw;
   opacity: 0.85;
 }
 
@@ -38,6 +38,15 @@ body {
   bottom: 1rem;
 }
 
+.viewMap {
+  height: 30vh;
+  opacity: 0.85;
+  margin-top: 1rem;
+  margin-bottom: 2rem;
+  border: #595047e6 solid 0.2rem;
+  border-radius: 0.8rem;
+}
+
 @media (min-width: 767px) {
   .imgLoadin {
     margin-top: 15vw;
@@ -49,5 +58,16 @@ body {
   }
   .imgScreenSearch {
     width: 20vw;
+  }
+  .viewMap {
+    height: 50vh;
+    opacity: 0.85;
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+    border: #595047e6 solid 0.4rem;
+    border-radius: 2rem;
+  }
+  .logoSearch {
+    width: 25vw;
   }
 }
