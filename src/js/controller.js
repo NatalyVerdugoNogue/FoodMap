@@ -43,13 +43,15 @@ const callDataMaps = () => {
     });
 
     infowindow = new google.maps.InfoWindow();
+
     let service = new google.maps.places.PlacesService(map);
     service.textSearch({
       location: pyrmont,
       radius: 500,
-      query: inputSearch
+      query: inputSearch,
     }, callback);
   };
+
 
   const callback = (results, status) => {
     if (status === google.maps.places.PlacesServiceStatus.OK) {
@@ -60,19 +62,20 @@ const callDataMaps = () => {
   };
 
   const createMarker = (place) => {
-    console.log(place.name);
-
     const placeLoc = place.geometry.location;
+
     let marker = new google.maps.Marker({
       map: map,
-      position: placeLoc
+      position: placeLoc,
+      animation: google.maps.Animation.DROP,
     });
 
     google.maps.event.addListener(marker, 'click', () => {
-      infowindow.setContent(place.name);
-      infowindow.open(map, this);
+      infowindow.setContent(place.name, place.formatted_address);
+      infowindow.open(map, marker);
     });
   };
+
   initMap();
   document.getElementById('inputSearch').value = '';
 };
@@ -106,6 +109,18 @@ const searchScreen = () => {
     </div>`;
   document.getElementById('inputSearch').value = 'laboratoria';
   callDataMaps();
+};
+
+const listName = (placeName) => {
+  let screenHTML = '';
+  screenHTML = screenHTML + `<div>
+  <p class="text-left">${ placeName} </p>
+  <button class="btn btn-outline-secondary" type="button" onclick="infoMaps()">
+    <img src="img/iconService.png" alt="iconService" width="32" height="32">
+  </button>
+</div>`
+  let divSScreen = document.getElementById('countainer');
+  divSScreen.innerHTML = screenHTML;
 };
 
 
