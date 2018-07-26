@@ -58,7 +58,6 @@ const callDataMaps = () => {
 
       for (let i = 0; i < results.length; i++) {
         createMarker(results[i]);
-        // console.log(results[i]);
 
         screenListHTML = screenListHTML +
           `<div class="row">
@@ -66,17 +65,17 @@ const callDataMaps = () => {
               <p class="text-left">${results[i].name}</p>
             </div>
             <div class="col-4">
-              <button class="btn btn-outline-secondary" type="button" id="${'a' + results[i].id}" onclick="btnDataMaps()">
+              <button class="btn btn-outline-secondary" type="button" data-toggle="modal" data-target="#exampleModal" id="${'a' + results[i].id}" onclick="btnDataMaps('${results[i].id}','${results[i].name}','${results[i].formatted_address}','${results[i].rating}')">
                 <img src="img/iconService.png" alt="iconFoodSearch" width="32" height="32">
               </button>
             </div>
+            <div class="h-0 " id="alert${results[i].id}"></div>
           </div>`;
       }
       let divScreenList = document.getElementById('mapList');
       divScreenList.innerHTML = screenListHTML;
     }
   };
-
 
 
   const createMarker = (place) => {
@@ -99,7 +98,39 @@ const callDataMaps = () => {
 
   initMap();
   document.getElementById('inputSearch').value = '';
+};
 
+
+const btnDataMaps = (id, name, address, rating) => {
+  let divDelete = document.getElementById(`alert${id}`);
+  divDelete.innerHTML =
+    `<div class="modal" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">${name}</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="row">
+            <div class="col-3"><p class="text-left">Dirección:</p></div>
+            <div class="col-9"><p class="text-left">${address}</p></div>
+          </div>
+        </div>
+        <div class="modal-body">
+          <div class="row">
+            <div class="col-3"><p class="text-left">Rating:</p></div>
+            <div class="col-9"><p class="text-left">${rating}</p></div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="searchScreen()">Pedir</button>
+        </div>
+      </div>
+    </div>
+  </div>`;
 };
 
 
