@@ -4,7 +4,7 @@ window.onload = () => {
 };
 
 // const callApiFood = () => {
-//   return fetch('https://developers.zomato.com/api/v2.1/search', {
+//   return fetch('https://developers.zomato.com/api/v2.1/geocode?lat=-33.4190451&lon=-70.64170990000002', {
 //     method: 'GET',
 //     headers: {
 //       'Accept': 'application/json',
@@ -52,16 +52,37 @@ const callDataMaps = () => {
     }, callback);
   };
 
-
   const callback = (results, status) => {
     if (status === google.maps.places.PlacesServiceStatus.OK) {
+      let screenListHTML = '';
+
       for (let i = 0; i < results.length; i++) {
         createMarker(results[i]);
+        // console.log(results[i]);
+
+        screenListHTML = screenListHTML +
+          `<div class="row">
+            <div class="col-8">
+              <p class="text-left">${results[i].name}</p>
+            </div>
+            <div class="col-4">
+              <button class="btn btn-outline-secondary" type="button" id="${'a' + results[i].id}" onclick="btnDataMaps()">
+                <img src="img/iconService.png" alt="iconFoodSearch" width="32" height="32">
+              </button>
+            </div>
+          </div>`;
       }
+      let divScreenList = document.getElementById('mapList');
+      divScreenList.innerHTML = screenListHTML;
     }
   };
 
+
+
   const createMarker = (place) => {
+    // console.log(place.geometry.location.lat());
+    // console.log(place.geometry.location.lng());
+
     const placeLoc = place.geometry.location;
 
     let marker = new google.maps.Marker({
@@ -71,13 +92,14 @@ const callDataMaps = () => {
     });
 
     google.maps.event.addListener(marker, 'click', () => {
-      infowindow.setContent(place.name, place.formatted_address);
+      infowindow.setContent(place.name);
       infowindow.open(map, marker);
     });
   };
 
   initMap();
   document.getElementById('inputSearch').value = '';
+
 };
 
 
@@ -89,38 +111,29 @@ const firstScreen = () => {
     </div>`;
 };
 
+
 const searchScreen = () => {
   let divSScreen = document.getElementById('countainer');
   divSScreen.innerHTML =
     `<div class="text-center imgLogosearch">
-      <img src="img/LogoFoodMap.png" class="img-fluid logoSearch" alt="Responsive image">
-    </div>
-    <div id="map" class="col-10 offset-1 viewMap"></div>
-    <div id="statement">
-      <p class="text-center textInput">Comida cerca de ti</p>
-    </div>
-    <div class="col-10 offset-1 col-md-8 offset-md-2 input-group mb-3">
-      <input id="inputSearch" type="text" class="form-control" placeholder="Filtrar restaurantes" aria-label="Filtrar " aria-describedby="button-addon2">
-      <div class="input-group-append">
-        <button class="btn btn-outline-secondary" type="button" id="button-addon2" onclick="callDataMaps()">
-          <img src="img/iconFoodSearch.png" alt="iconFoodSearch" width="32" height="32">
-        </button>
+        <img src="img/LogoFoodMap.png" class="img-fluid logoSearch" alt="Responsive image">
       </div>
-    </div>`;
+      <div id="map" class="col-10 offset-1 viewMap"></div>
+      <div id="statement">
+        <p class="text-center textInput">Comida cerca de ti</p>
+      </div>
+      <div class="col-10 offset-1 col-md-8 offset-md-2 input-group mb-3">
+        <input id="inputSearch" type="text" class="form-control" placeholder="Filtrar restaurantes" aria-label="Filtrar " aria-describedby="button-addon2">
+        <div class="input-group-append">
+          <button class="btn btn-outline-secondary" type="button" id="button-addon2" onclick="callDataMaps()">
+            <img src="img/iconFoodSearch.png" alt="iconFoodSearch" width="32" height="32">
+          </button>
+        </div>
+      </div>
+      <div id="mapList" class="col-10 offset-1 col-md-8 offset-md-2"></div>`;
+
   document.getElementById('inputSearch').value = 'laboratoria';
   callDataMaps();
-};
-
-const listName = (placeName) => {
-  let screenHTML = '';
-  screenHTML = screenHTML + `<div>
-  <p class="text-left">${ placeName} </p>
-  <button class="btn btn-outline-secondary" type="button" onclick="infoMaps()">
-    <img src="img/iconService.png" alt="iconService" width="32" height="32">
-  </button>
-</div>`
-  let divSScreen = document.getElementById('countainer');
-  divSScreen.innerHTML = screenHTML;
 };
 
 
