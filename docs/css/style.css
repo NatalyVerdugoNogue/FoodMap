@@ -1,0 +1,108 @@
+body {
+  background: url(../img/OCCNEV0.png);
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+}
+
+p {
+  font-family: "Sawasdee";
+}
+
+h5 {
+  font-family: "Sawasdee";
+  font-weight: 900;
+}
+
+.containerBack {
+  background: #ffb60047;
+}
+
+.imgLoadin {
+  background-size: cover;
+  background-position: center;
+  width: 50vw;
+  margin-top: 50vw;
+}
+
+.imgScreenSearch {
+  width: 35vw;
+  height: 20vh;
+  opacity: 0.7;
+}
+
+.logoSearch {
+  width: 50vw;
+  opacity: 0.85;
+}
+
+.imgLogosearch {
+  margin-top: 3vw;
+}
+
+.textInput {
+  font-family: "Sawasdee";
+  font-size: 1.5rem;
+  color: #595047;
+}
+
+.textList {
+  font-family: "Sawasdee";
+  font-size: 1rem;
+  color: #595047;
+}
+
+.positionImg {
+  position: absolute;
+  bottom: 1rem;
+}
+
+.viewMap {
+  height: 40vh;
+  opacity: 0.85;
+  margin-top: 1rem;
+  margin-bottom: 2rem;
+  border: #595047e6 solid 0.2rem;
+  border-radius: 0.8rem;
+}
+
+.img-thumbnail {
+  background-color: #595047;
+}
+
+.fondImg {
+  background: rgba(255, 255, 255, 0.43);
+  border-radius: 1rem;
+}
+
+.imgRan {
+  opacity: 0.85;
+}
+
+@media (min-width: 767px) {
+  .imgLoadin {
+    margin-top: 15vw;
+  }
+  .textInput {
+    font-family: "Sawasdee";
+    font-size: 2.5rem;
+    color: #595047;
+  }
+  .imgScreenSearch {
+    width: 20vw;
+  }
+  .viewMap {
+    height: 50vh;
+    opacity: 0.85;
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+    border: #595047e6 solid 0.4rem;
+    border-radius: 2rem;
+  }
+  .logoSearch {
+    width: 25vw;
+  }
+  .textList {
+    font-size: 1.3rem;
+  }
+}
