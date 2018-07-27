@@ -44,7 +44,7 @@ const callDataMaps = () => {
             </div>
             <div class="col-4 col-md-2">
               <button class="btn btn-outline-secondary" type="button" data-toggle="modal" data-target="#exampleModal" id="${'a' + results[i].id}" onclick="btnDataMaps('${results[i].id}','${results[i].name}','${results[i].formatted_address}','${results[i].rating}')">
-                <img src="img/iconService.png" alt="iconFoodSearch" width="32" height="32">
+                <img src="src/img/iconService.png" alt="iconFoodSearch" width="32" height="32">
               </button>
             </div>
             <div class="h-0 " id="alert${results[i].id}"></div>
@@ -113,7 +113,7 @@ const firstScreen = () => {
   let divFScreen = document.getElementById('countainer');
   divFScreen.innerHTML =
     `<div id="imgLogo" class="text-center">
-      <img src="img/LogoFoodMap.png" class="img-fluid imgLoadin" alt="Responsive image">
+      <img src="src/img/LogoFoodMap.png" class="img-fluid imgLoadin" alt="Responsive image">
     </div>`;
 };
 
@@ -126,7 +126,7 @@ const searchScreen = () => {
   divSScreen.innerHTML =
     `<div class="row text-center">
         <div class="imgLogosearch col-6 offset-3">
-          <img src="img/LogoFoodMap.png" class="img-fluid logoSearch" alt="Responsive image">
+          <img src="src/img/LogoFoodMap.png" class="img-fluid logoSearch" alt="Responsive image">
         </div>
       </div>
       <div class="row">
@@ -142,7 +142,7 @@ const searchScreen = () => {
           <input id="inputSearch" type="text" class="form-control" placeholder="Filtrar restaurantes" aria-label="Filtrar " aria-describedby="button-addon2">
           <div class="input-group-append">
             <button class="btn btn-outline-secondary" type="button" id="button-addon2" onclick="callDataMaps()">
-              <img src="img/iconFoodSearch.png" alt="iconFoodSearch" width="32" height="32">
+              <img src="src/img/iconFoodSearch.png" alt="iconFoodSearch" width="32" height="32">
             </button>
           </div>
         </div>
@@ -152,16 +152,16 @@ const searchScreen = () => {
       </div>
       <div class="row col-10 offset-1 p-0 mt-5">
         <div class="col-6 col-md-3 m-0 p-2">
-          <img src="img/ran1.jpeg" class="img-fluid img-thumbnail imgRan" alt="Responsive image">
+          <img src="src/img/ran1.jpeg" class="img-fluid img-thumbnail imgRan" alt="Responsive image">
         </div>
         <div class="col-6 col-md-3 m-0 p-2">
-          <img src="img/ran2.jpeg" class="img-fluid img-thumbnail imgRan" alt="Responsive image">
+          <img src="src/img/ran2.jpeg" class="img-fluid img-thumbnail imgRan" alt="Responsive image">
         </div>
         <div class="col-6 col-md-3 m-0 p-2">
-          <img src="img/ran3.jpeg" class="img-fluid img-thumbnail imgRan" alt="Responsive image">
+          <img src="src/img/ran3.jpeg" class="img-fluid img-thumbnail imgRan" alt="Responsive image">
         </div>
         <div class="col-6 col-md-3 m-0 p-2">
-          <img src="img/ran4.jpeg" class="img-fluid img-thumbnail imgRan" alt="Responsive image">
+          <img src="src/img/ran4.jpeg" class="img-fluid img-thumbnail imgRan" alt="Responsive image">
         </div>
       </div>`;
 
