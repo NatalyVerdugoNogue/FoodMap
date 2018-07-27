@@ -3,28 +3,6 @@ window.onload = () => {
   setTimeout(() => searchScreen(), 3000);
 };
 
-// const callApiFood = () => {
-//   return fetch('https://developers.zomato.com/api/v2.1/geocode?lat=-33.4190451&lon=-70.64170990000002', {
-//     method: 'GET',
-//     headers: {
-//       'Accept': 'application/json',
-//       'user-key': 'a005902f79e2b87d3fcca1e2716cde73'
-//     }
-//   }).then((response) => {
-//     if (response.ok) {
-//       return response.json();
-//     } else {
-//       throw new Error('La llamada a la API falló');
-//     }
-//   }).then((respuestaJson) => {
-//     console.log(respuestaJson);
-
-//     return respuestaJson;
-//   }).catch((err) => {
-//     console.error(err);
-//   });
-// };
-// callApiFood();
 
 const callDataMaps = () => {
   let inputSearch = document.getElementById('inputSearch').value;
@@ -60,11 +38,11 @@ const callDataMaps = () => {
         createMarker(results[i]);
 
         screenListHTML = screenListHTML +
-          `<div class="row">
-            <div class="col-8">
-              <p class="text-left">${results[i].name}</p>
+          `<div class="row my-2 py-1 fondImg">
+            <div class="col-8 col-md-9 offset-md-1">
+              <p class="text-left textList">${results[i].name}</p>
             </div>
-            <div class="col-4">
+            <div class="col-4 col-md-2">
               <button class="btn btn-outline-secondary" type="button" data-toggle="modal" data-target="#exampleModal" id="${'a' + results[i].id}" onclick="btnDataMaps('${results[i].id}','${results[i].name}','${results[i].formatted_address}','${results[i].rating}')">
                 <img src="img/iconService.png" alt="iconFoodSearch" width="32" height="32">
               </button>
@@ -72,16 +50,13 @@ const callDataMaps = () => {
             <div class="h-0 " id="alert${results[i].id}"></div>
           </div>`;
       }
+
       let divScreenList = document.getElementById('mapList');
       divScreenList.innerHTML = screenListHTML;
     }
   };
 
-
   const createMarker = (place) => {
-    // console.log(place.geometry.location.lat());
-    // console.log(place.geometry.location.lng());
-
     const placeLoc = place.geometry.location;
 
     let marker = new google.maps.Marker({
@@ -105,32 +80,32 @@ const btnDataMaps = (id, name, address, rating) => {
   let divDelete = document.getElementById(`alert${id}`);
   divDelete.innerHTML =
     `<div class="modal" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">${name}</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          <div class="row">
-            <div class="col-3"><p class="text-left">Dirección:</p></div>
-            <div class="col-9"><p class="text-left">${address}</p></div>
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">${name}</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
           </div>
-        </div>
-        <div class="modal-body">
-          <div class="row">
-            <div class="col-3"><p class="text-left">Rating:</p></div>
-            <div class="col-9"><p class="text-left">${rating}</p></div>
+          <div class="modal-body">
+            <div class="row">
+              <div class="col-3"><p class="text-left">Dirección:</p></div>
+              <div class="col-9"><p class="text-left">${address}</p></div>
+            </div>
           </div>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="searchScreen()">Pedir</button>
+          <div class="modal-body">
+            <div class="row">
+              <div class="col-3"><p class="text-left">Rating:</p></div>
+              <div class="col-9"><p class="text-left">${rating}</p></div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="searchScreen()">Pedir</button>
+          </div>
         </div>
       </div>
-    </div>
-  </div>`;
+    </div>`;
 };
 
 
@@ -144,41 +119,76 @@ const firstScreen = () => {
 
 
 const searchScreen = () => {
+  const element = document.getElementById('countainer');
+  element.classList.add('containerBack');
+
   let divSScreen = document.getElementById('countainer');
   divSScreen.innerHTML =
-    `<div class="text-center imgLogosearch">
-        <img src="img/LogoFoodMap.png" class="img-fluid logoSearch" alt="Responsive image">
-      </div>
-      <div id="map" class="col-10 offset-1 viewMap"></div>
-      <div id="statement">
-        <p class="text-center textInput">Comida cerca de ti</p>
-      </div>
-      <div class="col-10 offset-1 col-md-8 offset-md-2 input-group mb-3">
-        <input id="inputSearch" type="text" class="form-control" placeholder="Filtrar restaurantes" aria-label="Filtrar " aria-describedby="button-addon2">
-        <div class="input-group-append">
-          <button class="btn btn-outline-secondary" type="button" id="button-addon2" onclick="callDataMaps()">
-            <img src="img/iconFoodSearch.png" alt="iconFoodSearch" width="32" height="32">
-          </button>
+    `<div class="row text-center">
+        <div class="imgLogosearch col-6 offset-3">
+          <img src="img/LogoFoodMap.png" class="img-fluid logoSearch" alt="Responsive image">
         </div>
       </div>
-      <div id="mapList" class="col-10 offset-1 col-md-8 offset-md-2"></div>`;
+      <div class="row">
+        <div id="map" class="col-10 offset-1 viewMap"></div>
+      </div>
+      <div class="row text-center">
+        <div id="statement" class="col-12">
+          <p class="text-center textInput">Comida cerca de ti</p>
+        </div>
+      </div>
+      <div class="row mt-3">
+        <div class="col-10 offset-1 col-md-8 offset-md-2 input-group mb-3">
+          <input id="inputSearch" type="text" class="form-control" placeholder="Filtrar restaurantes" aria-label="Filtrar " aria-describedby="button-addon2">
+          <div class="input-group-append">
+            <button class="btn btn-outline-secondary" type="button" id="button-addon2" onclick="callDataMaps()">
+              <img src="img/iconFoodSearch.png" alt="iconFoodSearch" width="32" height="32">
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div id="mapList" class="col-10 offset-1 col-md-8 offset-md-2"></div>
+      </div>
+      <div class="row col-10 offset-1 p-0 mt-5">
+        <div class="col-6 col-md-3 m-0 p-2">
+          <img src="img/ran1.jpeg" class="img-fluid img-thumbnail imgRan" alt="Responsive image">
+        </div>
+        <div class="col-6 col-md-3 m-0 p-2">
+          <img src="img/ran2.jpeg" class="img-fluid img-thumbnail imgRan" alt="Responsive image">
+        </div>
+        <div class="col-6 col-md-3 m-0 p-2">
+          <img src="img/ran3.jpeg" class="img-fluid img-thumbnail imgRan" alt="Responsive image">
+        </div>
+        <div class="col-6 col-md-3 m-0 p-2">
+          <img src="img/ran4.jpeg" class="img-fluid img-thumbnail imgRan" alt="Responsive image">
+        </div>
+      </div>`;
 
   document.getElementById('inputSearch').value = 'laboratoria';
   callDataMaps();
 };
 
 
-{/* <div class="row positionImg col-10 offset-1">
-<div class="text-center col-6 col-md-3">
-  <img class="rounded-circle imgScreenSearch p-1" src="img/food.jpg" alt="Circle image">
-</div>
-<div class="text-center col-6 col-md-3">
-  <img class="rounded-circle imgScreenSearch p-1" src="img/food.jpg" alt="Circle image">
-</div>
-<div class="text-center col-6 col-md-3">
-  <img class="rounded-circle imgScreenSearch p-1" src="img/food.jpg" alt="Circle image">
-</div>
-<div class="text-center col-6 col-md-3">
-  <img class="rounded-circle imgScreenSearch p-1" src="img/food.jpg" alt="Circle image">
-</div>
-</div> */}
+// const callApiFood = () => {
+//   return fetch('https://developers.zomato.com/api/v2.1/geocode?lat=-33.4190451&lon=-70.64170990000002', {
+//     method: 'GET',
+//     headers: {
+//       'Accept': 'application/json',
+//       'user-key': 'a005902f79e2b87d3fcca1e2716cde73'
+//     }
+//   }).then((response) => {
+//     if (response.ok) {
+//       return response.json();
+//     } else {
+//       throw new Error('La llamada a la API falló');
+//     }
+//   }).then((respuestaJson) => {
+//     console.log(respuestaJson);
+
+//     return respuestaJson;
+//   }).catch((err) => {
+//     console.error(err);
+//   });
+// };
+// callApiFood();

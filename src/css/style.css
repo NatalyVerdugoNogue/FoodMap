@@ -5,6 +5,19 @@ body {
   height: 100vh;
 }
 
+p {
+  font-family: "Sawasdee";
+}
+
+h5 {
+  font-family: "Sawasdee";
+  font-weight: 900;
+}
+
+.containerBack {
+  background: #ffb60047;
+}
+
 .imgLoadin {
   background-size: cover;
   background-position: center;
@@ -33,18 +46,37 @@ body {
   color: #595047;
 }
 
+.textList {
+  font-family: "Sawasdee";
+  font-size: 1rem;
+  color: #595047;
+}
+
 .positionImg {
   position: absolute;
   bottom: 1rem;
 }
 
 .viewMap {
-  height: 30vh;
+  height: 40vh;
   opacity: 0.85;
   margin-top: 1rem;
   margin-bottom: 2rem;
   border: #595047e6 solid 0.2rem;
   border-radius: 0.8rem;
+}
+
+.img-thumbnail {
+  background-color: #595047;
+}
+
+.fondImg {
+  background: rgba(255, 255, 255, 0.43);
+  border-radius: 1rem;
+}
+
+.imgRan {
+  opacity: 0.85;
 }
 
 @media (min-width: 767px) {
@@ -69,5 +101,8 @@ body {
   }
   .logoSearch {
     width: 25vw;
+  }
+  .textList {
+    font-size: 1.3rem;
   }
 }
