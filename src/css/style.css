@@ -1,8 +1,29 @@
 body {
-  background: url(../img/OCCNEV0.jpg);
+  background: url(../img/OCCNEV0.jpg)no-repeat;
   background-size: cover;
   background-position: center;
   height: 100vh;
+  width: 100vw;
+}
+
+button:active {
+  border: none;
+  outline: none;
+}
+
+button:focus {
+  border: none;
+  outline: none;
+}
+
+input:active {
+  border: none;
+  outline: none;
+}
+
+input:focus {
+  border: none;
+  outline: none;
 }
 
 p {
