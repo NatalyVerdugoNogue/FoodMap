@@ -10,9 +10,6 @@ window.view.firstScreen = () => {
 
 
 window.view.searchScreen = () => {
-  const element = document.getElementById('countainer');
-  element.classList.add('containerBack');
-
   let divSScreen = document.getElementById('countainer');
   divSScreen.innerHTML =
     `<div class="row mx-0 text-center">
@@ -32,7 +29,7 @@ window.view.searchScreen = () => {
         <div class="col-10 offset-1 col-md-8 offset-md-2 input-group mb-3">
           <input id="inputSearch" type="text" class="form-control" placeholder="Filtrar restaurantes" aria-label="Filtrar " aria-describedby="button-addon2">
           <div class="input-group-append">
-            <button class="btn btn-outline-secondary" type="button" id="btnSearch" onclick="window.controller.getInfoPlace()">
+            <button class="btn-search" type="button" id="btnSearch" onclick="window.controller.getInfoPlace()">
               <img src="src/img/iconFoodSearch.png" alt="iconFoodSearch" width="32" height="32">
             </button>
           </div>
@@ -41,7 +38,7 @@ window.view.searchScreen = () => {
       <div class="row mx-0">
         <div id="mapList" class="col-10 offset-1 col-md-8 offset-md-2"></div>
       </div>
-      <div class="row mx-0 col-10 offset-1 p-0 mt-5">
+      <div class="row mx-0 pt-4 col-12">
         <div class="col-6 col-md-3 m-0 p-2">
           <img src="src/img/ran1.jpeg" class="img-fluid img-thumbnail imgRan" alt="Responsive image">
         </div>
@@ -61,16 +58,18 @@ window.view.searchScreen = () => {
 
 
 window.view.listFood = (results) => {
+  console.log('results', results);
+
   let screenListHTML = '';
 
   for (let i = 0; i < results.length; i++) {
     screenListHTML = screenListHTML +
       `<div class="row my-2 py-1 fondImg">
         <div class="col-8 col-md-9 offset-md-1">
-          <p class="text-left textList">${results[i].name}</p>
+          <p class="text-left textList pt-2 m-0">${results[i].name}</p>
         </div>
         <div class="col-4 col-md-2">
-          <button class="btn btn-outline-secondary" type="button" data-toggle="modal" data-target="#exampleModal" id="${'a' + results[i].id}" onclick="window.view.btnDataMaps('${results[i].id}','${results[i].name}','${results[i].formatted_address}','${results[i].rating}')">
+          <button class="btn btn-outline-secondary btn-border" type="button" data-toggle="modal" data-target="#exampleModal" id="${'a' + results[i].id}" onclick="window.view.btnDataMaps('${results[i].id}','${results[i].name}','${results[i].formatted_address}','${results[i].rating}')">
             <img src="src/img/iconService.png" alt="iconFoodSearch" width="32" height="32">
           </button>
         </div>
@@ -89,26 +88,36 @@ window.view.btnDataMaps = (id, name, address, rating) => {
     `<div class="modal" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">${name}</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body">
-            <div class="row">
-              <div class="col-3"><p class="text-left">Dirección:</p></div>
-              <div class="col-9"><p class="text-left">${address}</p></div>
+          <div class="modal-header px-0">
+            <div class="container-fluid px-0">
+              <div class="row mx-0">
+                <div class="col text-center px-0">
+                  <h5 class="modal-title modal-title" id="exampleModalLabel">${name}</h5>
+                </div>
+                <div class="col-auto pl-0">
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>     
+                  </button>
+                </div>
+              </div>
             </div>
           </div>
-          <div class="modal-body">
-            <div class="row">
-              <div class="col-3"><p class="text-left">Rating:</p></div>
-              <div class="col-9"><p class="text-left">${rating}</p></div>
+          <div class="modal-body px-0">
+            <div class="container-fluid">
+              <div class="row mx-0">
+                <div class="col-3 px-0"><p class="text-left modal-text">Dirección:</p></div>
+                <div class="col-9 px-0"><p class="text-left modal-text">${address}</p></div>
+              </div>
+            </div>
+            <div class="container-fluid">
+              <div class="row mx-0">
+                <div class="col-3 px-0"><p class="text-left modal-text">Rating:</p></div>
+                <div class="col-9 px-0"><p class="text-left modal-text">${rating}</p></div>
+              </div>
             </div>
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="searchScreen()">Pedir</button>
+            <button type="button" class="btn btn-secondary modal-btn" data-dismiss="modal" onclick="window.controller.searchScreen()">Pedir</button>
           </div>
         </div>
       </div>
