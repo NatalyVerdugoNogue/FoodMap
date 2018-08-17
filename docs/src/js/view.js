@@ -71,7 +71,7 @@ window.view.listFood = (results) => {
             <img src="src/img/iconService.png" alt="iconFoodSearch" width="32" height="32">
           </button>
         </div>
-        <div class="h-0 " id="alert${results[i].id}"></div>
+        <div class="h-0 " id="alert"></div>
       </div>`;
   }
 
@@ -81,7 +81,7 @@ window.view.listFood = (results) => {
 
 
 window.view.btnDataMaps = (id, name, address, rating, photo) => {
-  let divDelete = document.getElementById(`alert${id}`);
+  let divDelete = document.getElementById('alert');
   divDelete.innerHTML =
     `<div class="modal" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog" role="document">
