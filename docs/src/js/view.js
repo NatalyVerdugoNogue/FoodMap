@@ -67,7 +67,13 @@ window.view.listFood = (results) => {
           <p class="text-left textList pt-2 m-0">${results[i].name}</p>
         </div>
         <div class="col-4 col-md-2">
-          <button class="btn btn-outline-secondary btn-border" type="button" data-toggle="modal" data-target="#exampleModal" id="${'a' + results[i].id}" onclick="window.view.btnDataMaps('${results[i].id}','${results[i].name}','${results[i].formatted_address}','${results[i].rating}','${results[i].photos[0].getUrl({ 'maxWidth': 250, 'maxHeight': 135 })}')">
+          <button class="btn btn-outline-secondary btn-border" type="button" data-toggle="modal" data-target="#exampleModal" 
+          id="${'a' + results[i].id}" 
+          onclick="window.view.btnDataMaps(
+          '${results[i].id}',
+          '${results[i].name}',
+          '${results[i].formatted_address}',
+          '${results[i].rating}')">
             <img src="src/img/iconService.png" alt="iconFoodSearch" width="32" height="32">
           </button>
         </div>
@@ -80,7 +86,7 @@ window.view.listFood = (results) => {
 };
 
 
-window.view.btnDataMaps = (id, name, address, rating, photo) => {
+window.view.btnDataMaps = (id, name, address, rating) => {
   let divDelete = document.getElementById('alert');
   divDelete.innerHTML =
     `<div class="modal" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -111,7 +117,7 @@ window.view.btnDataMaps = (id, name, address, rating, photo) => {
                 <div class="col-9 px-0"><p class="text-left modal-text">${rating}</p></div>
               </div>
               <div class="row mx-0">
-                <div class="col-12 text-center py-3"><img src="${photo}" class="img-fluid img-thumbnail" alt="Responsive image"></div>
+                <div class="col-12 text-center py-3"><img src="src/img/foodDefect.png" class="img-fluid img-thumbnail" alt="Responsive image"></div>
               </div>
             </div>
           <div class="modal-footer">
@@ -121,3 +127,5 @@ window.view.btnDataMaps = (id, name, address, rating, photo) => {
       </div>
     </div>`;
 };
+
+// '${results[i].photos[0].getUrl({ 'maxWidth': 250, 'maxHeight': 135 })}')
