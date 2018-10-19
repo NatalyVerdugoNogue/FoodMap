@@ -9,7 +9,7 @@ Según las consideraciones de diseño generales determinadas por [Laboratoria](h
 La aplicación tiene una vista inicial (splash) con el logo, que dura 3 segundos.
 En al vista principal se muestra un mapa, que al realizar una búsqueda marca en el mapa los restaurantes cercanos y ademas muestra una lista con los restaurantes cercanos.
 
-![Vista Principal](https://github.com/NatalyVerdugoNogue/FoodMap/raw/master/img/foosmap1.png)
+![Vista Principal](https://github.com/NatalyVerdugoNogue/FoodMap/blob/master/img/foodmap1.png)
 
 Al momento de clickear sobre un elemento de la lista se desplegá un modal con datos como la dirección y el raking del restaurante.
 
