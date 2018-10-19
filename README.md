@@ -13,7 +13,7 @@ En al vista principal se muestra un mapa, que al realizar una búsqueda marca en
 
 Al momento de clickear sobre un elemento de la lista se desplegá un modal con datos como la dirección y el raking del restaurante.
 
-![Modal](https://github.com/NatalyVerdugoNogue/FoodMap/blob/master/img/foosmap2.png)
+![Modal](https://github.com/NatalyVerdugoNogue/FoodMap/blob/master/img/foodmap2.png)
 
 
 ## Desarrollo
